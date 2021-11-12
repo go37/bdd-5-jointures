@@ -1,0 +1,36 @@
+SELECT wizard.lastname, wizard.firstname, player.role, team.name FROM player JOIN wizard ON wizard.id = player.wizard_id JOIN team ON team.id = player.team_id ORDER BY name, role, lastname, firstname;
++------------+-----------+--------+------------+
+| lastname   | firstname | role   | name       |
++------------+-----------+--------+------------+
+| malefoy    | drago     | beater | Gryffindor |
+| weasley    | fred      | beater | Gryffindor |
+| granger    | hermione  | chaser | Gryffindor |
+| potter     | lily      | seeker | Gryffindor |
+| potter     | harry     | beater | Hufflepuff |
+| weasley    | george    | chaser | Hufflepuff |
+| weasley    | arthur    | keeper | Hufflepuff |
+| jédusor    | tom       | beater | Ravenclaw  |
+| rogue      | severus   | chaser | Ravenclaw  |
+| dursley    | dudley    | seeker | Ravenclaw  |
+| dumbledore | albus     | beater | Slytherin  |
+| weasley    | ron       | chaser | Slytherin  |
+| weasley    | ginny     | keeper | Slytherin  |
++------------+-----------+--------+------------+
+
+
+SELECT wizard.firstname, wizard.lastname FROM wizard JOIN player ON wizard.id = player.wizard_id WHERE player.role='seeker' ORDER BY lastname, firstname;
++-----------+----------+
+| firstname | lastname |
++-----------+----------+
+| dudley    | dursley  |
+| lily      | potter   |
++-----------+----------+
+
+
+SELECT wizard.lastname, wizard.firstname, player.role FROM wizard LEFT JOIN player ON wizard.id = player.wizard_id WHERE player.role IS NULL;
++----------+-----------+------+
+| lastname | firstname | role |
++----------+-----------+------+
+| weasley  | molly     | NULL |
++----------+-----------+------+
+
